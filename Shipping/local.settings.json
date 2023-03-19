@@ -1,0 +1,14 @@
+{
+  "IsEncrypted": false,
+
+  "Host": {
+    "LocalHttpPort": 8083
+  },
+
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "AzureWebJobsStorage": "",
+
+    "AzureWebJobsServiceBus": "@KeeShepherd(nsb-demo-standard-functions-primaryConnectionString)"
+  }
+}
