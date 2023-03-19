@@ -23,7 +23,7 @@ namespace ClientUI
         /// </summary>
         [FunctionName(nameof(PlaceOrder))]
         public async Task<IActionResult> PlaceOrder (
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = $"api/place-order")] HttpRequest req, 
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "api/place-order")] HttpRequest req, 
             ExecutionContext ctx
         )
         {
@@ -41,7 +41,7 @@ namespace ClientUI
         /// </summary>
         [FunctionName(nameof(PlaceDelayedOrder))]
         public async Task<IActionResult> PlaceDelayedOrder (
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = $"api/place-delayed-order")] HttpRequest req, 
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "api/place-delayed-order")] HttpRequest req, 
             ExecutionContext ctx
         )
         {
