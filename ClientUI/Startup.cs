@@ -14,11 +14,6 @@ public class Startup : FunctionsStartup
             var routing = config.Routing;
 
             routing.RouteToEndpoint(typeof(PlaceOrder), "Sales");
-
-            var endpointConfiguration = config.AdvancedConfiguration;
-
-            endpointConfiguration.SendFailedMessagesTo("error");
-            endpointConfiguration.AuditProcessedMessagesTo("audit");
         });
     }
 }
