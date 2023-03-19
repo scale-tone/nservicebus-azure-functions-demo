@@ -4,15 +4,14 @@ export default class App extends React.Component {
 
     render(): JSX.Element {
 
-        const uri = `${process.env.REACT_APP_BACKEND_BASE_URI}/HttpTest`;
+        const uri = `${process.env.REACT_APP_BACKEND_BASE_URI}/PlaceOrder`;
 
         return (<button onClick={() => {
             fetch(uri)
-                .then(response => response.text())
-                .then(text => alert(text))
-
+                .then(response => response.json())
+                .then(order => alert(`Order ${order.orderId} sent`), err => alert(`Failed to send an order. ${err.message ?? err}`))
         }}>
-            Press me to call {uri}
+            Place Order
         </button>);
     }
 }
