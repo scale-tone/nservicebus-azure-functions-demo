@@ -7,7 +7,7 @@ using Messages;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ClientUI.API
+namespace ClientUI
 {
     public class Functions
     {
@@ -18,8 +18,14 @@ namespace ClientUI.API
             this._functionEndpoint = functionEndpoint;
         }
 
+        /// <summary>
+        /// Sends a PlaceOrder command
+        /// </summary>
         [FunctionName(nameof(PlaceOrder))]
-        public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req, ExecutionContext ctx)
+        public async Task<IActionResult> Run (
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = $"api/place-order")] HttpRequest req, 
+            ExecutionContext ctx
+        )
         {
             string orderId = Guid.NewGuid().ToString().Substring(0, 8);
 

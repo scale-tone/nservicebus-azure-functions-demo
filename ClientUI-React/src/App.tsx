@@ -4,7 +4,7 @@ export default class App extends React.Component {
 
     render(): JSX.Element {
 
-        const uri = `${process.env.REACT_APP_BACKEND_BASE_URI}/PlaceOrder`;
+        const uri = `${process.env.REACT_APP_BACKEND_BASE_URI}/place-order`;
 
         return (<button onClick={() => {
             fetch(uri)
