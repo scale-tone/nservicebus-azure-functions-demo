@@ -23,7 +23,7 @@ namespace ClientUI
         /// </summary>
         [FunctionName(nameof(PlaceOrder))]
         public async Task<IActionResult> PlaceOrder (
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "api/place-order")] HttpRequest req, 
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "a/p/i/place-order")] HttpRequest req, 
             ExecutionContext ctx
         )
         {
@@ -41,7 +41,7 @@ namespace ClientUI
         /// </summary>
         [FunctionName(nameof(PlaceDelayedOrder))]
         public async Task<IActionResult> PlaceDelayedOrder (
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "api/place-delayed-order")] HttpRequest req, 
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "a/p/i/place-delayed-order")] HttpRequest req, 
             ExecutionContext ctx
         )
         {
@@ -63,13 +63,34 @@ namespace ClientUI
         /// </summary>
         [FunctionName(nameof(PlaceFatalOrder))]
         public async Task<IActionResult> PlaceFatalOrder (
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "api/place-fatal-order")] HttpRequest req, 
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "a/p/i/place-fatal-order")] HttpRequest req, 
             ExecutionContext ctx
         )
         {
             string orderId = Guid.NewGuid().ToString().Substring(0, 8);
 
             var command = new PlaceFatalOrder { OrderId = orderId };
+
+            var sendOptions = new SendOptions();
+            sendOptions.SetDestination("Sales");
+
+            await this._functionEndpoint.Send(command, sendOptions, ctx);
+
+            return new OkObjectResult(new { orderId });
+        }
+
+        /// <summary>
+        /// Sends a TestTransactions command
+        /// </summary>
+        [FunctionName(nameof(TestTransactions))]
+        public async Task<IActionResult> TestTransactions (
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "a/p/i/test-transactions")] HttpRequest req, 
+            ExecutionContext ctx
+        )
+        {
+            string orderId = Guid.NewGuid().ToString().Substring(0, 8);
+
+            var command = new TestTransactions { OrderId = orderId };
 
             var sendOptions = new SendOptions();
             sendOptions.SetDestination("Sales");

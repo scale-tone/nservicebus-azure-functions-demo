@@ -3,7 +3,10 @@ using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using NServiceBus;
 
 [assembly: FunctionsStartup(typeof(Startup))]
+
 [assembly: NServiceBusTriggerFunction("Sales")]
+// Uncomment this to enable SendsAtomicWithReceive aka CrossEntityTransactions. IMPORTANT: this also requires extensions.ServiceBus.EnableCrossEntityTransactions = true in host.json.
+// [assembly: NServiceBusTriggerFunction("Sales", SendsAtomicWithReceive = true)]
 
 public class Startup : FunctionsStartup
 {

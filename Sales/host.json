@@ -1,6 +1,12 @@
 {
   "version": "2.0",
 
+  "extensions": {
+    "ServiceBus": {
+      "EnableCrossEntityTransactions": true
+    }
+  },
+    
   "logging": {
     "applicationInsights": {
       "samplingSettings": {
