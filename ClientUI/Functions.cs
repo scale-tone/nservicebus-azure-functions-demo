@@ -57,5 +57,26 @@ namespace ClientUI
 
             return new OkObjectResult(new { orderId });
         }
+
+        /// <summary>
+        /// Sends a PlaceFatalOrder command
+        /// </summary>
+        [FunctionName(nameof(PlaceFatalOrder))]
+        public async Task<IActionResult> PlaceFatalOrder (
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "api/place-fatal-order")] HttpRequest req, 
+            ExecutionContext ctx
+        )
+        {
+            string orderId = Guid.NewGuid().ToString().Substring(0, 8);
+
+            var command = new PlaceFatalOrder { OrderId = orderId };
+
+            var sendOptions = new SendOptions();
+            sendOptions.SetDestination("Sales");
+
+            await this._functionEndpoint.Send(command, sendOptions, ctx);
+
+            return new OkObjectResult(new { orderId });
+        }
     }
 }

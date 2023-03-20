@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "ClientUI"
+		},
+		{
+			"path": "Billing"
+		},
+		{
+			"path": "Shipping"
+		},
+		{
+			"path": "Sales"
+		},
+		{
+			"path": "Messages"
+		},
+		{
+			"path": "ClientUI-React"
+		}
+	],
+	"settings": {
+		"debug.internalConsoleOptions": "neverOpen"
+	}
+}
