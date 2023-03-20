@@ -99,5 +99,34 @@ namespace ClientUI
 
             return new OkObjectResult(new { orderId });
         }
+
+        /// <summary>
+        /// Sends a bunch of PlaceWholesaleOrder commands
+        /// </summary>
+        [FunctionName(nameof(PlaceWholesaleOrders))]
+        public async Task<IActionResult> PlaceWholesaleOrders (
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "a/p/i/place-wholesale-orders")] HttpRequest req, 
+            ExecutionContext ctx
+        )
+        {
+            bool useSessions = req.Query["use-sessions"] == "true";
+
+            string customerId = Guid.NewGuid().ToString().Substring(0, 8);
+
+            var sendOptions = new SendOptions();
+            sendOptions.SetDestination( useSessions ? "Wholesale" : "Sales");
+
+            // Setting native message's SessionId field
+            sendOptions.CustomizeNativeMessage(m => m.SessionId = customerId);
+
+            for (int i = 0; i < 5; i++)
+            {
+                var command = new PlaceWholesaleOrder { CustomerId = customerId, Id = i };
+
+                await this._functionEndpoint.Send(command, sendOptions, ctx);
+            }
+
+            return new OkObjectResult(new { customerId });
+        }
     }
 }
