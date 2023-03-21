@@ -67,3 +67,10 @@ asb-transport endpoint create Shipping
     
     Also check out [why you don't actually need it ;)](https://particular.net/blog/you-dont-need-ordered-delivery).
 
+4. How to enable and use [message deduplication](https://learn.microsoft.com/en-us/azure/service-bus-messaging/duplicate-detection).
+
+    [Sample code is here](https://github.com/scale-tone/nservicebus-azure-functions-demo/blob/master/ClientUI/TestDeduplicationHandler.cs#L14). To work correctly it requires the destination queue (called `dedup`) to be created with `Enable duplicate detection` flag set:
+    
+    <img width="300px" src="https://user-images.githubusercontent.com/5447190/226705277-e5955a23-49f9-4c40-be0f-91f6c8279673.png"/>
+
+    
