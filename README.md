@@ -1,4 +1,4 @@
-# nservicebus-azure-functions-demo
+# NServiceBus + Azure Functions + Azure Service Bus Demo
 
 Demonstrates how to build and host [NServiceBus](https://docs.particular.net/get-started/)-based services with Azure Functions and Azure Service Bus. 
 
