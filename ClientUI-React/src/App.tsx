@@ -14,6 +14,8 @@ export default class App extends React.Component {
             <br/><br/>
             <button onClick={() => this.testTransactions()}> Test Transactions </button>
             <br/><br/>
+            <button onClick={() => this.testDedup()}> Test Message Deduplication </button>
+            <br/><br/>
             <button onClick={() => this.placeWholesaleOrders(false)}> Place Wholesale Orders without sessions </button>
             <br/><br/>
             <button onClick={() => this.placeWholesaleOrders(true)}> Place Wholesale Orders with sessions </button>
@@ -45,6 +47,13 @@ export default class App extends React.Component {
     private testTransactions() {
 
         fetch(`${process.env.REACT_APP_BACKEND_BASE_URI}/test-transactions`)
+            .then(response => response.json())
+            .then(order => alert(`Command ${order.orderId} sent`), err => alert(`Failed to send a command. ${err.message ?? err}`));
+    }
+
+    private testDedup() {
+
+        fetch(`${process.env.REACT_APP_BACKEND_BASE_URI}/test-deduplication`)
             .then(response => response.json())
             .then(order => alert(`Command ${order.orderId} sent`), err => alert(`Failed to send a command. ${err.message ?? err}`));
     }

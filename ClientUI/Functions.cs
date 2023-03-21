@@ -101,6 +101,27 @@ namespace ClientUI
         }
 
         /// <summary>
+        /// Sends a TestDedup command to itself
+        /// </summary>
+        [FunctionName(nameof(TestDeduplication))]
+        public async Task<IActionResult> TestDeduplication (
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "a/p/i/test-deduplication")] HttpRequest req, 
+            ExecutionContext ctx
+        )
+        {
+            string orderId = Guid.NewGuid().ToString().Substring(0, 8);
+
+            var command = new TestDedup { OrderId = orderId };
+
+            var sendOptions = new SendOptions();
+            sendOptions.RouteToThisEndpoint();
+
+            await this._functionEndpoint.Send(command, sendOptions, ctx);
+
+            return new OkObjectResult(new { orderId });
+        }
+
+        /// <summary>
         /// Sends a bunch of PlaceWholesaleOrder commands
         /// </summary>
         [FunctionName(nameof(PlaceWholesaleOrders))]
