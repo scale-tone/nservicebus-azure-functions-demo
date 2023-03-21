@@ -38,7 +38,7 @@ asb-transport endpoint create Billing
 asb-transport endpoint create Shipping
 ```
 
-4. Create another queue named `Wholesale` [manually](https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-quickstart-portal#create-a-queue-in-the-azure-portal), with **sessions enabled** on it:
+4. Create another queue named `Wholesale` [manually](https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-quickstart-portal#create-a-queue-in-the-azure-portal), with **message sessions enabled** on it:
 
 <img width="300px" src="https://user-images.githubusercontent.com/5447190/226625040-2d670206-cf03-45d9-b72d-7c06f52eee3a.png"/>
 
