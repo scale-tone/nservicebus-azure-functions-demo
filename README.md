@@ -38,7 +38,7 @@ asb-transport endpoint create Billing
 asb-transport endpoint create Shipping
 ```
 
-4. Create another queue named `Wholesale` [manually](https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-quickstart-portal#create-a-queue-in-the-azure-portal), with **sessions enabled** on it:
+4. Create another queue named `Wholesale` [manually](https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-quickstart-portal#create-a-queue-in-the-azure-portal), with **message sessions enabled** on it:
 
 <img width="300px" src="https://user-images.githubusercontent.com/5447190/226625040-2d670206-cf03-45d9-b72d-7c06f52eee3a.png"/>
 
@@ -62,4 +62,8 @@ asb-transport endpoint create Shipping
 3. How to enable and use [message sessions](https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-sessions) (aka ordered delivery).
 
     [Sample code is here](https://github.com/scale-tone/nservicebus-azure-functions-demo/blob/master/ClientUI/Functions.cs#L111). To work correctly it requires [message sessions be enabled](https://learn.microsoft.com/en-us/azure/service-bus-messaging/enable-message-sessions) on the destination queue.
+    
+    Also check out [Jeff Hollan's very useful post about message sessions](https://dev.to/azure/ordered-queue-processing-in-azure-functions-4h6c).
+    
+    Also check out [why you don't actually need it ;)](https://particular.net/blog/you-dont-need-ordered-delivery).
 
