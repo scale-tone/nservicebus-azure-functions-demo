@@ -9,9 +9,14 @@ Demonstrates how to build and host [NServiceBus](https://docs.particular.net/get
 graph LR
 
 Browser[[Browser]] -.-> ClientUI
+
+subgraph Azure Functions
+
 ClientUI -- "#9889; PlaceOrder" --> Sales
 Sales -- "#9889; OrderPlaced" --> Billing
 Sales -- "#9889; OrderPlaced" --> Shipping
+
+end
 
 ```
 
