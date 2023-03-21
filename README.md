@@ -1,6 +1,6 @@
 # nservicebus-azure-functions-demo
 
-Demonstrates how to build and host NServiceBus-based services with Azure Functions and Azure Service Bus. 
+Demonstrates how to build and host [NServiceBus](https://docs.particular.net/get-started/)-based services with Azure Functions and Azure Service Bus. 
 
 [Official NServiceBus quick start solution](https://docs.particular.net/tutorials/quickstart/) migrated to [Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview) with [Azure Service Bus](https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview) used as messaging transport.
 
@@ -44,3 +44,17 @@ asb-transport endpoint create Shipping
 7. Navigate to `http://localhost:7071` with your browser.
 
     The `ClientUI` project is an Azure Function, but it also serves static HTML files for the [client-side React-based UI app](https://github.com/scale-tone/nservicebus-azure-functions-demo/tree/master/ClientUI-React), so there is no need to host them anywhere else.
+
+## Concepts demonstrated
+
+1. How to [host NServiceBus endpoints as Azure Functions](https://docs.particular.net/nservicebus/hosting/azure-functions-service-bus/).
+
+2. How to enable and use [cross-entity transactions](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/servicebus/Azure.Messaging.ServiceBus/samples/Sample06_Transactions.md).
+
+    [Sample code is here](https://github.com/scale-tone/nservicebus-azure-functions-demo/blob/master/Sales/TestTransactionsHandler.cs#L14). 
+    To work correctly, it requires `EnableCrossEntityTransactions` [set to `true` in `host.json`](https://github.com/scale-tone/nservicebus-azure-functions-demo/blob/master/Sales/host.json#L6) and `SendsAtomicWithReceive` [set to `true` on `NServiceBusTriggerFunction` attribute](https://github.com/scale-tone/nservicebus-azure-functions-demo/blob/master/Sales/Startup.cs#L9).
+
+3. How to enable and use [message sessions](https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-sessions) (aka ordered delivery).
+
+    [Sample code is here](https://github.com/scale-tone/nservicebus-azure-functions-demo/blob/master/ClientUI/Functions.cs#L111). To work correctly it requires [message sessions be enabled](https://learn.microsoft.com/en-us/azure/service-bus-messaging/enable-message-sessions) on the destination queue.
+
