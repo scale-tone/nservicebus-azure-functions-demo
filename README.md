@@ -62,4 +62,6 @@ asb-transport endpoint create Shipping
 3. How to enable and use [message sessions](https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-sessions) (aka ordered delivery).
 
     [Sample code is here](https://github.com/scale-tone/nservicebus-azure-functions-demo/blob/master/ClientUI/Functions.cs#L111). To work correctly it requires [message sessions be enabled](https://learn.microsoft.com/en-us/azure/service-bus-messaging/enable-message-sessions) on the destination queue.
+    Also check out [Jeff Hollan's very useful post about message sessions](https://dev.to/azure/ordered-queue-processing-in-azure-functions-4h6c).
+    Also check out [why you actually don't need it ;)](https://particular.net/blog/you-dont-need-ordered-delivery).
 
