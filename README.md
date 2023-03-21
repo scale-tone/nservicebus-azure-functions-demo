@@ -1,6 +1,8 @@
 # nservicebus-azure-functions-demo
 
-Demonstrates how to build and host NServiceBus-based services with Azure Functions and Azure Service Bus. [Official NServiceBus quick start solution](https://docs.particular.net/tutorials/quickstart/) migrated to [Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview) with [Azure Service Bus](https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview) used as messaging transport.
+Demonstrates how to build and host NServiceBus-based services with Azure Functions and Azure Service Bus. 
+
+[Official NServiceBus quick start solution](https://docs.particular.net/tutorials/quickstart/) migrated to [Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview) with [Azure Service Bus](https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview) used as messaging transport.
 
 ```mermaid
 
