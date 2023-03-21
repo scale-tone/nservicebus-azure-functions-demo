@@ -2,6 +2,18 @@
 
 Demonstrates how to build and host NServiceBus-based services with Azure Functions and Azure Service Bus
 
+```mermaid
+
+graph LR
+
+Browser[[Browser]] -.-> ClientUI
+ClientUI -- "#9889; PlaceOrder" --> Sales
+Sales -- "#9889; OrderPlaced" --> Billing
+Sales -- "#9889; OrderPlaced" --> Shipping
+
+```
+
+
 ## How to run
 
 As a prerequisite, you will need [Azure Functions Core Tools installed on your devbox](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local#install-the-azure-functions-core-tools).
