@@ -36,7 +36,7 @@ namespace ClientUI
 
                 if (!File.Exists(fullLocalPath))
                 {
-                    new NotFoundResult();
+                    return new NotFoundResult();
                 }
 
                 contentTypeValue = contentType[1];
